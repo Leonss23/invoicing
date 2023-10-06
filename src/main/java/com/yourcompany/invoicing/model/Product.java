@@ -1,13 +1,9 @@
 package com.yourcompany.invoicing.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-import org.openxava.annotations.Required;
-
-import lombok.Getter;
-import lombok.Setter;
+import java.math.BigDecimal;
+import javax.persistence.*;
+import org.openxava.annotations.*;
+import lombok.*;
 
 @Entity
 @Getter
@@ -20,4 +16,19 @@ public class Product {
     @Column(length = 50)
     @Required
     String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @DescriptionsList
+    Category category;
+
+    @Money
+    BigDecimal price;
+
+    @Files
+    @Column(length = 32)
+    String photos;
+
+    @TextArea
+    String remarks;
+
 }

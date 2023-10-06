@@ -1,9 +1,7 @@
 package com.yourcompany.invoicing.model;
 
 import javax.persistence.*;
-
 import org.openxava.annotations.*;
-
 import lombok.*;
 
 @Entity
@@ -18,4 +16,7 @@ public class Customer {
     @Column(length = 50)
     @Required
     String name;
+
+    @Embedded
+    Address address;
 }

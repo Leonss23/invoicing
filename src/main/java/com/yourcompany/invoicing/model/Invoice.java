@@ -17,6 +17,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@View(members = "year, number, date; customer; details; remarks")
 public class Invoice {
 
     @Id
@@ -42,6 +43,7 @@ public class Invoice {
     String remarks;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ReferenceView("Simple")
     Customer customer;
 
     @ElementCollection
